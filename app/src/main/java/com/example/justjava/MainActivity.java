@@ -31,11 +31,23 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the order button is clicked.
      */
+    int quantity = 2;
     public void submitOrder(View view) {
-        display(2);
-        displayPrice(2*5);
+
+        display(quantity);
+        displayPrice(quantity*5);
+    }
+    public void increment(View view) {
+        quantity++;
+        display(quantity);
+
     }
 
+    public void decrement(View view) {
+        quantity--;
+        display(quantity);
+
+    }
     /**
      * This method displays the given quantity value on the screen.
      */
