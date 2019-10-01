@@ -34,24 +34,24 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 2;
     public void submitOrder(View view) {
 
-        display(quantity);
+        displayMessage(quantity);
         displayPrice(quantity*5);
     }
     public void increment(View view) {
         quantity++;
-        display(quantity);
+        displayMessage(quantity);
 
     }
 
     public void decrement(View view) {
         quantity--;
-        display(quantity);
+        displayMessage(quantity);
 
     }
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayMessage(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }

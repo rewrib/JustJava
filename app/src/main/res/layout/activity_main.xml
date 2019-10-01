@@ -33,7 +33,7 @@
             android:layout_width="48dp"
             android:text="-"
             android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="8dp"
             android:onClick="decrement"
             />
 
@@ -53,7 +53,7 @@
             android:layout_width="48dp"
             android:text="+"
             android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             android:onClick="increment"
             />
 
