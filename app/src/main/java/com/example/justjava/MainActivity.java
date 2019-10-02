@@ -33,31 +33,38 @@ public class MainActivity extends AppCompatActivity {
      */
     int quantity = 2;
     public void submitOrder(View view) {
-
-        displayMessage(quantity);
-        displayPrice(quantity*5);
+        int price = quantity * 5;
+        String priceMessage ="Total price: $"  + price + "\nPlease come again, when I'm not working.";
+        displayMessage(priceMessage);
     }
     public void increment(View view) {
         quantity++;
-        displayMessage(quantity);
+        displayQuantity(quantity);
 
     }
 
     public void decrement(View view) {
         quantity--;
-        displayMessage(quantity);
+        displayQuantity(quantity);
 
     }
     /**
-     * This method displays the given quantity value on the screen.
+     * This method displays the given text on the screen.
      */
-    private void displayMessage(int numberOfCoffees) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + numberOfCoffees);
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
     /**
      * This method displays the given price on the screen.
      */
+    /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void displayQuantity(int numberOfCoffees) {
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityTextView.setText("" + numberOfCoffees);
+    }
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
