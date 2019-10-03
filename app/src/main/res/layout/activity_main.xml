@@ -62,7 +62,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PRICE"
+        android:text="ORDER SUMMARY"
 
         android:layout_marginBottom="16dp"
         />
@@ -72,7 +72,7 @@
         android:text="$10"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:id="@+id/price_text_view"
+        android:id="@+id/order_summary_text_view"
         />
     <Button
 
