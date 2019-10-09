@@ -1,5 +1,7 @@
 package com.example.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -34,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate, name));
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.just_java_order_for) + name);
+        intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary(price, hasWhippedCream, hasChocolate, name));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
     }
     /**
      * Calculates the price of the order.
@@ -62,12 +73,12 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate, String name) {
-        String priceMessage = "Name : " + name +
-                "\nQuantity: " + quantity +
-                "\nTotal: $" + price +
-                "\nWhipped cream: " + hasWhippedCream +
-                "\nChocolate: " + hasChocolate +
-                "\n\nPlease come again, when I'm not working.";
+        String priceMessage = getString(R.string.name_tag) + name +
+                "\n" + getString(R.string.quantity_tag) + quantity +
+                "\n" + getString(R.string.total_tag) + price +
+                "\n" + getString(R.string.whipped_cream_tag) + hasWhippedCream +
+                "\n" + getString(R.string.chocolate_tag) + hasChocolate +
+                "\n" + "\n" + getString(R.string.enthusiasm);
         return priceMessage;
 
     }
@@ -91,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
+
 
     /**
      * This method displays the given quantity value on the screen.
