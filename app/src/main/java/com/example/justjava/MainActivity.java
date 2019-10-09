@@ -72,13 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void increment(View view) {
-        quantity++;
+        if(quantity <= 100) {
+        quantity++;}
         displayQuantity(quantity);
 
     }
 
     public void decrement(View view) {
-        quantity--;
+        if(quantity > 0){
+        quantity--;}
         displayQuantity(quantity);
 
     }
