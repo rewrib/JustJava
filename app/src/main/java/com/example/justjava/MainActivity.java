@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     int quantity = 2;
-    boolean stateWC;
+
     public void submitOrder(View view) {
         EditText nameField = findViewById(R.id.name_field);
         String name = nameField.getText().toString();
@@ -32,12 +32,25 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
-        int price = quantity * 5;
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
         displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate, name));
     }
-    public void setStateWC(View view){
-        stateWC = true;
+    /**
+     * Calculates the price of the order.
+     *
+     * @return total price
+     */
+    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate) {
+        int basePrice = 5;
+        if(hasWhippedCream){
+            basePrice += 1;
+        }
+        if(hasChocolate){
+            basePrice += 2;
+        }
+        return basePrice * quantity;
     }
+
 
     /**
      * Create summary of the order.
